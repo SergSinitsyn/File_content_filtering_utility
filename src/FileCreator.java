@@ -5,7 +5,7 @@ public class FileCreator {
 
     private String filename;
     private boolean appendOption;
-    private boolean isStartWriting = false;
+    private boolean isWritingStarted = false;
 
     FileCreator(String name, String prefix, String path, boolean appendOption) {
         this.appendOption = appendOption;
@@ -19,15 +19,19 @@ public class FileCreator {
         }
     }
 
-    public void addData(String data) {
-        if (!isStartWriting) {
+    public void addData(String string) {
+        if (!isWritingStarted) {
+            isWritingStarted = true;
             createFile();
-            isStartWriting = true;
         }
         try (FileWriter fileWriter = new FileWriter(filename, true)) {
-            fileWriter.write(data + System.lineSeparator());
+            fileWriter.write(string + System.lineSeparator());
         } catch (IOException e) {
             System.err.println("Failed to write to the file: " + e.getMessage());
+        } catch (NullPointerException e) {
+            System.err.println("Null pointer reference: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
         }
     }
 
@@ -36,6 +40,10 @@ public class FileCreator {
 
         } catch (IOException e) {
             System.err.println("Failed to write to the file: " + e.getMessage());
+        } catch (NullPointerException e) {
+            System.err.println("Null pointer reference: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
         }
     }
 
