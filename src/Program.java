@@ -23,7 +23,7 @@ public class Program {
             throw new RuntimeException("No input files");
         }
 
-        // don't create directory if all files are empty
+//         don't create directory if all files are empty
         if (arguments.getPath() != null) {
             try {
                 Files.createDirectories(Paths.get(arguments.getPath()));
@@ -48,6 +48,10 @@ public class Program {
         for (String path : arguments.getFiles()) {
             readFile(path);
         }
+
+        integersOutputFile.closeFile();
+        floatsOutputFile.closeFile();
+        stringsOutputFile.closeFile();
 
         printStatistics();
     }
@@ -92,7 +96,7 @@ public class Program {
     private static DataType identifyDataType(String string) {
         if (string.matches("-?\\d+")) {
             return DataType.INTEGER_NUMBER;
-        } else if (string.matches("-?\\d+(.\\d+)?(([Ee])([-+])?\\d+)?")) {
+        } else if (string.matches("-?\\d+(.\\d+)?([Ee][-+]?\\d+)?")) {
             return DataType.REAL_NUMBER;
         } else {
             return DataType.STRING;
