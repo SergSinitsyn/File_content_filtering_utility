@@ -10,8 +10,8 @@ public class Arguments {
     @Parameter(names = {"-p"}, description = "Prefix for output files")
     private String prefix;
 
-    @Parameter(names = {"-a"}, description = "Add option")
-    private boolean addOption;
+    @Parameter(names = {"-a"}, description = "Append option")
+    private boolean appendOption;
 
     @Parameter(names = {"-s"}, description = "Short statistics")
     private boolean shortStatistics;
@@ -31,8 +31,8 @@ public class Arguments {
         return prefix;
     }
 
-    public boolean isAddOption() {
-        return addOption;
+    public boolean isAppendOption() {
+        return appendOption;
     }
 
     public boolean isShortStatistics() {

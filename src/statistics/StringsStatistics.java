@@ -1,25 +1,21 @@
-package Statistics;
+package statistics;
 
 public class StringsStatistics extends Statistics {
-    private int shortest;
-    private int longest;
+    private int shortest = Integer.MAX_VALUE;
+    private int longest = 0;
 
     public StringsStatistics(StatisticsType statisticsType) {
         super(statisticsType);
     }
 
     @Override
-    public void add(String data) {
-        addData(data);
-
+    public void addData(String data) {
+        count++;
         if (StatisticsType.SHORT == statisticsType) {
             return;
         }
-        if (count == 1) {
-            shortest = data.length();
-            longest = data.length();
-            return;
-        }
+
+
         if (data.length() < shortest) {
             shortest = data.length();
         }
@@ -29,7 +25,7 @@ public class StringsStatistics extends Statistics {
     }
 
     public String toString() {
-        if (statisticsType == StatisticsType.SHORT) {
+        if (statisticsType == StatisticsType.SHORT || count == 0) {
             return "\tcount: " + count;
         }
         return "\tcount: " + count + System.lineSeparator()

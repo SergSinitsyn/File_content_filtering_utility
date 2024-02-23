@@ -1,8 +1,8 @@
-package Statistics;
+package statistics;
 
 public class IntegerNumbersStatistics extends Statistics {
-    private long max = 0L;
-    private long min = 0L;
+    private long max = Long.MIN_VALUE;
+    private long min = Long.MAX_VALUE;
     private long sum = 0L;
 
     public IntegerNumbersStatistics(StatisticsType statisticsType) {
@@ -10,30 +10,23 @@ public class IntegerNumbersStatistics extends Statistics {
     }
 
     @Override
-    public void add(String data) {
-        addData(data);
-
+    public void addData(String data) {
+        count++;
         if (statisticsType == StatisticsType.SHORT) {
             return;
         }
+
         long number = Long.parseLong(data);
         sum += number;
-
-        if (count == 1) {
-            max = number;
-            min = number;
-            return;
-        }
         if (number > max) {
             max = number;
-            return;
         }
         if (number < min) {
             min = number;
         }
     }
 
-    private double getAverage() {
+    private double calculateAverage() {
         if (count == 0) {
             return 0;
         }
@@ -41,13 +34,13 @@ public class IntegerNumbersStatistics extends Statistics {
     }
 
     public String toString() {
-        if (statisticsType == StatisticsType.SHORT) {
+        if (statisticsType == StatisticsType.SHORT || count == 0) {
             return "\tcount: " + count;
         }
         return "\tcount: " + count + System.lineSeparator()
                 + "\tmin: " + min + System.lineSeparator()
                 + "\tmax: " + max + System.lineSeparator()
                 + "\tsum: " + sum + System.lineSeparator()
-                + "\taverage: " + getAverage();
+                + "\taverage: " + calculateAverage();
     }
 }

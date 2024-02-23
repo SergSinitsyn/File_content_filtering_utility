@@ -1,8 +1,8 @@
-package Statistics;
+package statistics;
 
 public class RealNumbersStatistics extends Statistics {
-    private double max = 0;
-    private double min = 0;
+    private double max = Double.MIN_VALUE;
+    private double min = Double.MAX_VALUE;
     private double sum = 0;
 
     public RealNumbersStatistics(StatisticsType statisticsType) {
@@ -10,30 +10,24 @@ public class RealNumbersStatistics extends Statistics {
     }
 
     @Override
-    public void add(String data) {
-        addData(data);
-
+    public void addData(String data) {
+        count++;
         if (statisticsType == StatisticsType.SHORT) {
             return;
         }
+
+
         double number = Double.parseDouble(data);
         sum += number;
-
-        if (count == 1) {
-            max = number;
-            min = number;
-            return;
-        }
         if (number > max) {
             max = number;
-            return;
         }
         if (number < min) {
             min = number;
         }
     }
 
-    private double getAverage() {
+    private double calculateAverage() {
         if (count == 0) {
             return 0;
         }
@@ -41,13 +35,13 @@ public class RealNumbersStatistics extends Statistics {
     }
 
     public String toString() {
-        if (statisticsType == StatisticsType.SHORT) {
+        if (statisticsType == StatisticsType.SHORT || count == 0) {
             return "\tcount: " + count;
         }
         return "\tcount: " + count + System.lineSeparator()
                 + "\tmin: " + min + System.lineSeparator()
                 + "\tmax: " + max + System.lineSeparator()
                 + "\tsum: " + sum + System.lineSeparator()
-                + "\taverage: " + getAverage();
+                + "\taverage: " + calculateAverage();
     }
 }
