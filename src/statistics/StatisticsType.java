@@ -1,6 +1,3 @@
 package statistics;
 
-public enum StatisticsType {
-    SHORT,
-    FULL
-}
+public enum StatisticsType {SHORT, FULL}

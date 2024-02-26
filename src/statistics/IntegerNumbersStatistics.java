@@ -34,13 +34,15 @@ public class IntegerNumbersStatistics extends Statistics {
     }
 
     public String toString() {
+        String result = "Integer numbers statistics:" + System.lineSeparator();
         if (statisticsType == StatisticsType.SHORT || count == 0) {
-            return "\tcount: " + count;
+            return result + "\tcount: " + count;
         }
-        return "\tcount: " + count + System.lineSeparator()
-                + "\tmin: " + min + System.lineSeparator()
-                + "\tmax: " + max + System.lineSeparator()
-                + "\tsum: " + sum + System.lineSeparator()
-                + "\taverage: " + calculateAverage();
+        return result +
+                "\tcount: " + count + System.lineSeparator() +
+                "\tmin: " + min + System.lineSeparator() +
+                "\tmax: " + max + System.lineSeparator() +
+                "\tsum: " + sum + System.lineSeparator() +
+                "\taverage: " + calculateAverage();
     }
 }

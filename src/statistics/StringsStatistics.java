@@ -15,7 +15,6 @@ public class StringsStatistics extends Statistics {
             return;
         }
 
-
         if (data.length() < shortest) {
             shortest = data.length();
         }
@@ -25,11 +24,13 @@ public class StringsStatistics extends Statistics {
     }
 
     public String toString() {
+        String result = "Strings statistics:" + System.lineSeparator();
         if (statisticsType == StatisticsType.SHORT || count == 0) {
-            return "\tcount: " + count;
+            return result + "\tcount: " + count;
         }
-        return "\tcount: " + count + System.lineSeparator()
-                + "\tshortest: " + shortest + System.lineSeparator()
-                + "\tlongest: " + longest;
+        return result +
+                "\tcount: " + count + System.lineSeparator() +
+                "\tshortest: " + shortest + System.lineSeparator() +
+                "\tlongest: " + longest;
     }
 }

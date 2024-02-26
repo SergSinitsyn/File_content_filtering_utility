@@ -11,8 +11,5 @@ public abstract class Statistics {
 
     public abstract void addData(String data);
 
-    public int getCount() {
-        return count;
-    }
-
 }
+
