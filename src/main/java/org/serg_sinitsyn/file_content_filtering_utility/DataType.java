@@ -1,3 +1,5 @@
+package org.serg_sinitsyn.file_content_filtering_utility;
+
 public enum DataType {
     INTEGER_NUMBER, REAL_NUMBER, STRING;
 

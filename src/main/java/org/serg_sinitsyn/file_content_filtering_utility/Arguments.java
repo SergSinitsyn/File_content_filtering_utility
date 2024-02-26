@@ -1,4 +1,5 @@
-import com.beust.jcommander.JCommander;
+package org.serg_sinitsyn.file_content_filtering_utility;
+
 import com.beust.jcommander.Parameter;
 
 import java.util.List;

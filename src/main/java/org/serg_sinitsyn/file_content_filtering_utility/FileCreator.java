@@ -1,3 +1,5 @@
+package org.serg_sinitsyn.file_content_filtering_utility;
+
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -19,7 +21,7 @@ public class FileCreator {
         }
     }
 
-    public void addData(String string) {
+    public void addData(String string) throws Exception {
         if (!isWritingStarted) {
             isWritingStarted = true;
             createFile();
@@ -36,15 +38,15 @@ public class FileCreator {
         }
     }
 
-    private void createFile() {
+    private void createFile() throws Exception {
         try {
             fileWriter = new FileWriter(filename, appendOption);
         } catch (IOException e) {
-            System.err.println("Failed to write to the file: " + e.getMessage());
+            throw new IOException("Failed to write to the file: " + e.getMessage());
         } catch (NullPointerException e) {
-            System.err.println("Null pointer reference: " + e.getMessage());
+            throw new NullPointerException("Null pointer reference: " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("An unexpected error occurred: " + e.getMessage());
+            throw new Exception("An unexpected error occurred: " + e.getMessage());
         }
     }
 
@@ -55,5 +57,5 @@ public class FileCreator {
             System.err.println("An unexpected error occurred: " + e.getMessage());
         }
     }
-    
+
 }

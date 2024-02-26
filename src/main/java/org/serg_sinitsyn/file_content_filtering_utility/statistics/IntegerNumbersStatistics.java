@@ -1,4 +1,4 @@
-package statistics;
+package org.serg_sinitsyn.file_content_filtering_utility.statistics;
 
 public class IntegerNumbersStatistics extends Statistics {
     private long max = Long.MIN_VALUE;

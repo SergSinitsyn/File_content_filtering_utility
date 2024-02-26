@@ -1,4 +1,5 @@
-import statistics.*;
+package org.serg_sinitsyn.file_content_filtering_utility;
+
 import com.beust.jcommander.JCommander;
 
 import java.io.IOException;
@@ -6,9 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsType;
+
 public class Program {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Arguments arguments = parseArguments(args);
         if (!validateArguments(arguments)) {
             return;
@@ -53,7 +56,7 @@ public class Program {
                 arguments.getPrefix(), arguments.getPath());
     }
 
-    private static void processFiles(Arguments arguments, FileProcessor fileProcessor) {
+    private static void processFiles(Arguments arguments, FileProcessor fileProcessor) throws Exception {
         for (String path : arguments.getFiles()) {
             fileProcessor.processFile(path);
         }

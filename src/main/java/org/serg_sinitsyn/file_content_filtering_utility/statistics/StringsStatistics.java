@@ -1,4 +1,4 @@
-package statistics;
+package org.serg_sinitsyn.file_content_filtering_utility.statistics;
 
 public class StringsStatistics extends Statistics {
     private int shortest = Integer.MAX_VALUE;

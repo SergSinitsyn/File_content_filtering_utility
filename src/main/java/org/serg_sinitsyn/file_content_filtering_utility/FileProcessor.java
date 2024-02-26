@@ -1,4 +1,10 @@
-import statistics.*;
+package org.serg_sinitsyn.file_content_filtering_utility;
+
+import org.serg_sinitsyn.file_content_filtering_utility.statistics.IntegerNumbersStatistics;
+import org.serg_sinitsyn.file_content_filtering_utility.statistics.RealNumbersStatistics;
+import org.serg_sinitsyn.file_content_filtering_utility.statistics.Statistics;
+import org.serg_sinitsyn.file_content_filtering_utility.statistics.StringsStatistics;
+import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsType;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,7 +16,7 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 public class FileProcessor {
-    private static final Pattern INTEGER_PATTERN =
+    private static final Pattern INTEGER_NUMBER_PATTERN =
             Pattern.compile("-?\\d+");
     private static final Pattern REAL_NUMBER_PATTERN =
             Pattern.compile("-?\\d+(.\\d+)?([Ee][-+]?\\d+)?");
@@ -28,7 +34,7 @@ public class FileProcessor {
     }
 
 
-    public void processFile(String path) {
+    public void processFile(String path) throws Exception {
         try (BufferedReader reader = Files.newBufferedReader(Paths.get(path))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -56,7 +62,7 @@ public class FileProcessor {
     }
 
     private DataType identifyDataType(String string) {
-        if (INTEGER_PATTERN.matcher(string).matches()) {
+        if (INTEGER_NUMBER_PATTERN.matcher(string).matches()) {
             return DataType.INTEGER_NUMBER;
         } else if (REAL_NUMBER_PATTERN.matcher(string).matches()) {
             return DataType.REAL_NUMBER;
