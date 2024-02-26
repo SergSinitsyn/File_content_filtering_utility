@@ -11,7 +11,7 @@ import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsTyp
 
 public class Program {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         Arguments arguments = parseArguments(args);
         if (!validateArguments(arguments)) {
             return;
@@ -21,11 +21,23 @@ public class Program {
             createDirectory(arguments.getPath());
         }
 
-        FileProcessor fileProcessor = createFileProcessor(arguments);
-        processFiles(arguments, fileProcessor);
+        FileProcessor fileProcessor = new FileProcessor(
+                arguments.isFullStatistics() ? StatisticsType.FULL : StatisticsType.SHORT,
+                arguments.isAppendOption(),
+                arguments.getPrefix(),
+                arguments.getPath());
 
-        fileProcessor.closeFiles();
-        fileProcessor.printStatistics();
+        try {
+            for (String path : arguments.getFiles()) {
+                fileProcessor.processFile(path);
+            }
+            fileProcessor.closeFiles();
+            fileProcessor.printStatistics();
+        } catch (Exception e) {
+            System.err.println("An error occurred while processing files: " + e.getMessage());
+            e.printStackTrace();
+        }
+
 
         if (arguments.getPath() != null) {
             deleteDirectory(arguments.getPath());
@@ -47,19 +59,6 @@ public class Program {
             return false;
         }
         return true;
-    }
-
-    private static FileProcessor createFileProcessor(Arguments arguments) {
-        StatisticsType statisticsType =
-                arguments.isFullStatistics() ? StatisticsType.FULL : StatisticsType.SHORT;
-        return new FileProcessor(statisticsType, arguments.isAppendOption(),
-                arguments.getPrefix(), arguments.getPath());
-    }
-
-    private static void processFiles(Arguments arguments, FileProcessor fileProcessor) throws Exception {
-        for (String path : arguments.getFiles()) {
-            fileProcessor.processFile(path);
-        }
     }
 
     private static void createDirectory(String path) {
