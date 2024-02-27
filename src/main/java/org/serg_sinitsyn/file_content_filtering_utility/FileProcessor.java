@@ -61,7 +61,7 @@ public class FileProcessor {
         }
     }
 
-    private DataType identifyDataType(String string) {
+    public DataType identifyDataType(String string) {
         if (INTEGER_NUMBER_PATTERN.matcher(string).matches()) {
             return DataType.INTEGER_NUMBER;
         } else if (REAL_NUMBER_PATTERN.matcher(string).matches()) {
