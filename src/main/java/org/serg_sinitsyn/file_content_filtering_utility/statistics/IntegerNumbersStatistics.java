@@ -26,7 +26,7 @@ public class IntegerNumbersStatistics extends Statistics {
         }
     }
 
-    private double calculateAverage() {
+    public double calculateAverage() {
         if (count == 0) {
             return 0;
         }
@@ -44,5 +44,17 @@ public class IntegerNumbersStatistics extends Statistics {
                 "\tmax: " + max + System.lineSeparator() +
                 "\tsum: " + sum + System.lineSeparator() +
                 "\taverage: " + calculateAverage();
+    }
+
+    public long getMax() {
+        return max;
+    }
+
+    public long getMin() {
+        return min;
+    }
+
+    public long getSum() {
+        return sum;
     }
 }

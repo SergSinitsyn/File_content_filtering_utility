@@ -31,6 +31,7 @@ public class Program {
             for (String path : arguments.getFiles()) {
                 fileProcessor.processFile(path);
             }
+
             fileProcessor.closeFiles();
             fileProcessor.printStatistics();
         } catch (Exception e) {

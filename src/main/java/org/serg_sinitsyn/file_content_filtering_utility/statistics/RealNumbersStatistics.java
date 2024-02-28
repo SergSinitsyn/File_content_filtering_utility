@@ -26,7 +26,7 @@ public class RealNumbersStatistics extends Statistics {
         }
     }
 
-    private double calculateAverage() {
+    public double calculateAverage() {
         if (count == 0) {
             return 0;
         }
@@ -44,5 +44,17 @@ public class RealNumbersStatistics extends Statistics {
                 "\tmax: " + max + System.lineSeparator() +
                 "\tsum: " + sum + System.lineSeparator() +
                 "\taverage: " + calculateAverage();
+    }
+
+    public double getMax() {
+        return max;
+    }
+
+    public double getMin() {
+        return min;
+    }
+
+    public double getSum() {
+        return sum;
     }
 }

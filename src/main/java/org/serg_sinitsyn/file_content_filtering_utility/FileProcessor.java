@@ -22,7 +22,7 @@ public class FileProcessor {
             Pattern.compile("-?\\d+(.\\d+)?([Ee][-+]?\\d+)?");
     private Map<DataType, FileCreator> fileCreators = new HashMap<>();
     private Map<DataType, Statistics> statistics = new HashMap<>();
-
+ 
     FileProcessor(StatisticsType statisticsType, boolean appendOption, String prefix, String path) {
         statistics.put(DataType.INTEGER_NUMBER, new IntegerNumbersStatistics(statisticsType));
         statistics.put(DataType.REAL_NUMBER, new RealNumbersStatistics(statisticsType));

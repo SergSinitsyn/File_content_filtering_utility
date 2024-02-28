@@ -33,4 +33,12 @@ public class StringsStatistics extends Statistics {
                 "\tshortest: " + shortest + System.lineSeparator() +
                 "\tlongest: " + longest;
     }
+
+    public int getShortest() {
+        return shortest;
+    }
+
+    public int getLongest() {
+        return longest;
+    }
 }

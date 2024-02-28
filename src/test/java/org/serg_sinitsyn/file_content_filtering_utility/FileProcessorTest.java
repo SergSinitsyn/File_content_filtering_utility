@@ -11,7 +11,7 @@ import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsTyp
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class FileProcessorTest {
+class FileProcessorTest {
     FileProcessor fileProcessor;
 
     @BeforeEach
@@ -22,8 +22,8 @@ public class FileProcessorTest {
 
     @ParameterizedTest
     @DisplayName("Test for integer numbers")
-    @ValueSource(strings = {"45", "1234567890123456789", "100500"})
-    public void identifyDataTypeTest(String string) {
+    @ValueSource(strings = {"445", "1234567890123456789", "100500"})
+    public void identifyDataType_integerNumber(String string) {
         assertEquals(DataType.INTEGER_NUMBER, fileProcessor.identifyDataType(string));
     }
 
@@ -32,7 +32,7 @@ public class FileProcessorTest {
     @ValueSource(strings = {"1.528535047E-25", "3.1415", "-0.001",
             "25e3", "-3.23", "5.35235", "7.34e+13", "11.243E-1234",
             "-000.123"})
-    public void identifyDataTypeTest2(String string) {
+    public void identifyDataType_realNumber(String string) {
         assertEquals(DataType.REAL_NUMBER, fileProcessor.identifyDataType(string));
     }
 
@@ -41,7 +41,7 @@ public class FileProcessorTest {
     @ValueSource(strings = {"Lorem ipsum dolor sit amet", "Пример", "consectetur adipiscing",
             "тестовое задание", "Нормальная форма числа с плавающей запятой",
             "Long"})
-    public void identifyDataTypeTest3(String string) {
+    public void identifyDataTypeTest_string(String string) {
         assertEquals(DataType.STRING, fileProcessor.identifyDataType(string));
     }
 
