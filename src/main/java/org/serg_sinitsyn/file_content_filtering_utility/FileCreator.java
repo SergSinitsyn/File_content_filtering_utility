@@ -51,6 +51,9 @@ public class FileCreator {
     }
 
     public void closeFile() {
+        if (!isWritingStarted) {
+            return;
+        }
         try {
             fileWriter.close();
         } catch (Exception e) {
