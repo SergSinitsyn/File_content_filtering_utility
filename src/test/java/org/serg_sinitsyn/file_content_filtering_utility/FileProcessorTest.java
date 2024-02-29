@@ -1,9 +1,7 @@
 package org.serg_sinitsyn.file_content_filtering_utility;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsType;
@@ -46,23 +44,4 @@ class FileProcessorTest {
     }
 
 
-//    @AfterEach
-//    void tearDown() {
-//    }
-//
-//    @Test
-//    void processFile() {
-//    }
-//
-//    @Test
-//    void printStatistics() {
-//    }
-//
-//    @Test
-//    void closeFiles() {
-//    }
-//
-//    @Test
-//    void identifyDataType() {
-//    }
 }

@@ -6,10 +6,13 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
 
 import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsType;
 
+
 public class Program {
+    private static final Pattern PREFIX_PATTERN = Pattern.compile("^[^\\\\/:*?\"<>|]+$");
 
     public static void main(String[] args) {
         Arguments arguments = parseArguments(args);
@@ -57,6 +60,11 @@ public class Program {
     private static boolean validateArguments(Arguments arguments) {
         if (arguments.getFiles() == null || arguments.getFiles().isEmpty()) {
             System.err.println("No input files");
+            return false;
+        }
+
+        if (!PREFIX_PATTERN.matcher(arguments.getPrefix()).matches()) {
+            System.err.println("Incorrect prefix");
             return false;
         }
         return true;

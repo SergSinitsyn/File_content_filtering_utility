@@ -1,5 +1,6 @@
 package org.serg_sinitsyn.file_content_filtering_utility.statistics;
 
+
 public class StringsStatistics extends Statistics {
     private int shortest = Integer.MAX_VALUE;
     private int longest = 0;
@@ -23,6 +24,7 @@ public class StringsStatistics extends Statistics {
         }
     }
 
+    @Override
     public String toString() {
         String result = "Strings statistics:" + System.lineSeparator();
         if (statisticsType == StatisticsType.SHORT || count == 0) {

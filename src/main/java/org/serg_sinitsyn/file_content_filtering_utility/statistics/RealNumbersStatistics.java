@@ -33,6 +33,7 @@ public class RealNumbersStatistics extends Statistics {
         return sum / count;
     }
 
+    @Override
     public String toString() {
         String result = "Real numbers statistics:" + System.lineSeparator();
         if (statisticsType == StatisticsType.SHORT || count == 0) {

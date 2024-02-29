@@ -33,6 +33,7 @@ public class IntegerNumbersStatistics extends Statistics {
         return (double) sum / count;
     }
 
+    @Override
     public String toString() {
         String result = "Integer numbers statistics:" + System.lineSeparator();
         if (statisticsType == StatisticsType.SHORT || count == 0) {

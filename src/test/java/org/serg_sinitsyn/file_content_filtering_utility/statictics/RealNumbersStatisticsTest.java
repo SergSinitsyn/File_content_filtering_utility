@@ -3,9 +3,7 @@ package org.serg_sinitsyn.file_content_filtering_utility.statictics;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.serg_sinitsyn.file_content_filtering_utility.statistics.IntegerNumbersStatistics;
 import org.serg_sinitsyn.file_content_filtering_utility.statistics.RealNumbersStatistics;
-import org.serg_sinitsyn.file_content_filtering_utility.statistics.Statistics;
 import org.serg_sinitsyn.file_content_filtering_utility.statistics.StatisticsType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

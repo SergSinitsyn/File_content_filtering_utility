@@ -4,9 +4,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class FileCreator {
+    private final boolean appendOption;
     private FileWriter fileWriter;
     private String filename;
-    private boolean appendOption;
     private boolean isWritingStarted = false;
 
     FileCreator(String name, String prefix, String path, boolean appendOption) {
